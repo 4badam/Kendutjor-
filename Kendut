@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>For My Gwen. 🕷️</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Permanent+Marker&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --red: #e50914;
+      --blue: #087cff;
+      --white: #f5f5f5;
+      --dark: #050507;
+      --gray: #a5a5a5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(229, 9, 20, .10), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(8, 124, 255, .08), transparent 30%),
+        #050507;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       BACKGROUND PATTERN
+    ========================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      opacity: .15;
+      background-image:
+        linear-gradient(30deg, #ffffff08 12%, transparent 12.5%, transparent 87%, #ffffff08 87.5%),
+        linear-gradient(150deg, #ffffff08 12%, transparent 12.5%, transparent 87%, #ffffff08 87.5%),
+        linear-gradient(30deg, #ffffff08 12%, transparent 12.5%, transparent 87%, #ffffff08 87.5%),
+        linear-gradient(150deg, #ffffff08 12%, transparent 12.5%, transparent 87%, #ffffff08 87.5%);
+      background-size: 80px 140px;
+      background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -4;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 79px,
+          rgba(255,255,255,.025) 80px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0px,
+          transparent 79px,
+          rgba(255,255,255,.02) 80px
+        );
+    }
+
+    /* =========================
+       FLOATING PARTICLES
+    ========================= */
+
+    .particle {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: white;
+      opacity: .3;
+      pointer-events: none;
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      from {
+        transform: translateY(100vh);
+      }
+      to {
+        transform: translateY(-10vh);
+      }
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      width: min(900px, 92%);
+      margin: auto;
+      padding: 70px 0 100px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .small-title {
+      font-size: .75rem;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 20px;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .small-title span {
+      color: var(--red);
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      line-height: .88;
+      letter-spacing: 2px;
+      max-width: 850px;
+      text-shadow:
+        4px 4px 0 rgba(229, 9, 20, .25),
+        -3px -3px 0 rgba(8, 124, 255, .15);
+      animation: titleIn 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      max-width: 560px;
+      color: #aaa;
+      line-height: 1.8;
+      font-size: .9rem;
+      animation: fadeUp 1.4s .2s ease both;
+    }
+
+    .scroll-btn {
+      margin-top: 40px;
+      border: 1px solid #444;
+      background: #ffffff08;
+      color: white;
+      padding: 13px 22px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: .3s;
+      backdrop-filter: blur(8px);
+      animation: fadeUp 1.4s .4s ease both;
+    }
+
+    .scroll-btn:hover {
+      border-color: var(--red);
+      box-shadow: 0 0 25px rgba(229, 9, 20, .25);
+      transform: translateY(-4px);
+    }
+
+    /* =========================
+       SPIDER WEB FLOWER
+    ========================= */
+
+    .web-flower {
+      width: 270px;
+      height: 270px;
+      position: relative;
+      margin-bottom: 30px;
+      animation: webFloat 5s ease-in-out infinite;
+    }
+
+    .web-flower::before,
+    .web-flower::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.13);
+      transform: scale(.75);
+    }
+
+    .web-flower::after {
+      transform: scale(.5);
+      border-color: rgba(229,9,20,.35);
+    }
+
+    .petal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 130px;
+      height: 130px;
+      transform-origin: 0 0;
+    }
+
+    .petal span {
+      position: absolute;
+      width: 100px;
+      height: 50px;
+      left: 0;
+      top: -25px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 100% 0 100% 0;
+      transform: rotate(35deg);
+      box-shadow: 0 0 12px rgba(229,9,20,.08);
+    }
+
+    .petal:nth-child(1)  { transform: rotate(0deg); }
+    .petal:nth-child(2)  { transform: rotate(30deg); }
+    .petal:nth-child(3)  { transform: rotate(60deg); }
+    .petal:nth-child(4)  { transform: rotate(90deg); }
+    .petal:nth-child(5)  { transform: rotate(120deg); }
+    .petal:nth-child(6)  { transform: rotate(150deg); }
+    .petal:nth-child(7)  { transform: rotate(180deg); }
+    .petal:nth-child(8)  { transform: rotate(210deg); }
+    .petal:nth-child(9)  { transform: rotate(240deg); }
+    .petal:nth-child(10) { transform: rotate(270deg); }
+    .petal:nth-child(11) { transform: rotate(300deg); }
+    .petal:nth-child(12) { transform: rotate(330deg); }
+
+    .web-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 35px;
+      height: 35px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #050507;
+      border: 2px solid var(--red);
+      box-shadow:
+        0 0 15px rgba(229,9,20,.7),
+        0 0 50px rgba(229,9,20,.25);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .web-center::before {
+      content: "🕷";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      filter: grayscale(1);
+    }
+
+    @keyframes webFloat {
+      0%,100% { transform: rotate(-2deg) translateY(0); }
+      50% { transform: rotate(2deg) translateY(-12px); }
+    }
+
+    @keyframes pulse {
+      0%,100% {
+        box-shadow: 0 0 15px rgba(229,9,20,.7);
+      }
+      50% {
+        box-shadow: 0 0 35px rgba(229,9,20,.9);
+      }
+    }
+
+    /* =========================
+       LETTER
+    ========================= */
+
+    .letter-section {
+      margin-top: 30px;
+      padding: 55px;
+      position: relative;
+      border: 1px solid #242424;
+      background: rgba(10,10,12,.82);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 30px 100px rgba(0,0,0,.4);
+      overflow: hidden;
+    }
+
+    .letter-section::before {
+      content: "SPIDER";
+      position: absolute;
+      right: -30px;
+      top: 10px;
+      font-family: 'Bebas Neue';
+      font-size: 7rem;
+      color: rgba(255,255,255,.025);
+      pointer-events: none;
+    }
+
+    .letter-section::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 1px solid var(--red);
+      border-radius: 50%;
+      right: -50px;
+      bottom: -50px;
+      opacity: .3;
+    }
+
+    .letter-label {
+      font-family: 'Permanent Marker', cursive;
+      color: var(--red);
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .letter p {
+      color: #ddd;
+      line-height: 2;
+      font-size: 1rem;
+      margin-bottom: 22px;
+    }
+
+    .letter p::first-letter {
+      color: white;
+    }
+
+    .signature {
+      margin-top: 45px;
+      text-align: right;
+      font-family: 'Permanent Marker', cursive;
+      color: #ddd;
+      font-size: 1.1rem;
+      transform: rotate(-2deg);
+    }
+
+    .signature span {
+      display: block;
+      color: var(--red);
+      font-size: .8rem;
+      margin-top: 5px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    /* =========================
+       BOTTOM WEB
+    ========================= */
+
+    .bottom-web {
+      margin: 90px auto 0;
+      width: 230px;
+      height: 230px;
+      position: relative;
+      opacity: .6;
+    }
+
+    .bottom-web .ring {
+      position: absolute;
+      inset: 0;
+      border: 1px solid #555;
+      border-radius: 50%;
+    }
+
+    .bottom-web .ring:nth-child(2) {
+      inset: 30px;
+    }
+
+    .bottom-web .ring:nth-child(3) {
+      inset: 60px;
+    }
+
+    .bottom-web .line {
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      background: #555;
+      left: 50%;
+      top: 0;
+      transform-origin: center;
+    }
+
+    .bottom-web .line:nth-child(2) { transform: rotate(30deg); }
+    .bottom-web .line:nth-child(3) { transform: rotate(60deg); }
+    .bottom-web .line:nth-child(4) { transform: rotate(90deg); }
+    .bottom-web .line:nth-child(5) { transform: rotate(120deg); }
+    .bottom-web .line:nth-child(6) { transform: rotate(150deg); }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+      margin-top: 70px;
+      color: #555;
+      font-size: .75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    footer b {
+      color: var(--red);
+    }
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes titleIn {
+      from {
+        opacity: 0;
+        transform: scale(.8) translateY(30px);
+        filter: blur(10px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      main {
+        width: 90%;
+        padding-top: 35px;
+      }
+
+      .hero {
+        min-height: 95vh;
+      }
+
+      .web-flower {
+        width: 210px;
+        height: 210px;
+      }
+
+      .petal {
+        width: 100px;
+        height: 100px;
+      }
+
+      .petal span {
+        width: 75px;
+        height: 40px;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+      }
+
+      .small-title {
+        letter-spacing: 4px;
+      }
+
+      .hero-sub {
+        font-size: .8rem;
+      }
+
+      .letter-section {
+        padding: 30px 23px;
+      }
+
+      .letter p {
+        font-size: .92rem;
+        line-height: 1.9;
+      }
+
+      .signature {
+        font-size: .95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating particles -->
+  <div class="particle" style="left:5%; animation-duration:12s;"></div>
+  <div class="particle" style="left:17%; animation-duration:17s;"></div>
+  <div class="particle" style="left:31%; animation-duration:14s;"></div>
+  <div class="particle" style="left:47%; animation-duration:20s;"></div>
+  <div class="particle" style="left:62%; animation-duration:15s;"></div>
+  <div class="particle" style="left:78%; animation-duration:18s;"></div>
+  <div class="particle" style="left:91%; animation-duration:13s;"></div>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="web-flower">
+
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+        <div class="petal"><span></span></div>
+
+        <div class="web-center"></div>
+
+      </div>
+
+
+      <div class="small-title">
+        For My <span>Gwen.</span>
+      </div>
+
+
+      <h1>
+        CIEEEE<br>
+        UDEH SEBULAN NIH<br>
+        YEEEE :V
+      </h1>
+
+
+      <p class="hero-sub">
+        One month. Satu chapter kecil yang ternyata isinya
+        banyak banget cerita, ketawa, dan kekacauan.
+      </p>
+
+
+      <button class="scroll-btn" onclick="document.getElementById('letter').scrollIntoView()">
+        🕸 baca suratnya
+      </button>
+
+    </section>
+
+
+    <!-- LETTER -->
+    <section class="letter-section" id="letter">
+
+      <div class="letter">
+
+        <div class="letter-label">
+          Dear Kenny,
+        </div>
+
+
+        <p>
+          Duar, Kendut. Anjay dah sebulan kita nyak, kagak berasa ye.
+          Makasih ya, Ken, udah mau jadi pacar gua, makasih juga udah
+          mau nyebokin kebam setiap hari. Walopun awal temu kita agak
+          kurang ngenakin, tapi gua bersyukur bisa kenal lu. Lu keren dah,
+          Ken, makan apaan sih lu bisa keren begini?
+        </p>
+
+
+        <p>
+          Maaf ya, Ken, kalo sebulan ini gua masih banyak kurangnya,
+          ya wajar manusia bukan nabi boyyyyy. Sori ye kalo gua masih
+          ngeselin, kedepannya gua bakal self improve biar makin
+          ngeselin :V BHAP.
+        </p>
+
+
+        <p>
+          Tapi ya, Ken, one thing you must know adalah gua cinta lu
+          sedikit lebih banyak dari ketoprak. Ibarat kata nih ye,
+          goyangan abang ketoprak emang mantep, tapi goyangan lu lebih
+          mantep, Ken. Ciyus, gaboong, kalo boong gua ciyus lagi.
+          Makasih ya, Ken, udah jadi keren. Lu makan apa sih bisa keren
+          begini? Gemes bet dah petasan korek, gua kresekin lu.
+        </p>
+
+
+        <p>
+          I 🤟 U, Kenny. (Kata Megawati)
+        </p>
+
+
+        <div class="signature">
+          With Love,
+          <br>
+          Abadam Parker
+
+          <span>🕷 your friendly neighborhood lover</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DECORATIVE WEB -->
+    <div class="bottom-web">
+
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+
+    </div>
+
+
+    <footer>
+      made with chaos & love · <b>Abadam Parker</b>
+    </footer>
+
+  </main>
+
+
+  <script>
+
+    /* =========================
+       RANDOM PARTICLES
+    ========================= */
+
+    const body = document.body;
+
+    for (let i = 0; i < 18; i++) {
+
+      const particle = document.createElement("div");
+
+      particle.className = "particle";
+
+      particle.style.left = Math.random() * 100 + "%";
+      particle.style.animationDuration =
+        (10 + Math.random() * 15) + "s";
+
+      particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+      particle.style.opacity =
+        (0.1 + Math.random() * 0.35);
+
+      body.appendChild(particle);
+    }
+
+
+    /* =========================
+       CLICK WEB EFFECT
+    ========================= */
+
+    document.addEventListener("click", function(e) {
+
+      const web = document.createElement("div");
+
+      web.style.position = "fixed";
+      web.style.left = e.clientX + "px";
+      web.style.top = e.clientY + "px";
+      web.style.width = "10px";
+      web.style.height = "10px";
+      web.style.border = "1px solid rgba(255,255,255,.7)";
+      web.style.borderRadius = "50%";
+      web.style.transform = "translate(-50%, -50%)";
+      web.style.pointerEvents = "none";
+      web.style.zIndex = "9999";
+      web.style.animation = "clickWeb .7s ease-out forwards";
+
+      document.body.appendChild(web);
+
+      setTimeout(() => {
+        web.remove();
+      }, 700);
+
+    });
+
+
+    const clickStyle = document.createElement("style");
+
+    clickStyle.innerHTML = `
+      @keyframes clickWeb {
+        from {
+          width: 10px;
+          height: 10px;
+          opacity: 1;
+        }
+
+        to {
+          width: 100px;
+          height: 100px;
+          opacity: 0;
+        }
+      }
+    `;
+
+    document.head.appendChild(clickStyle);
+
+  </script>
+
+</body>
+</html>
